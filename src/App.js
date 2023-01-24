@@ -14,7 +14,7 @@ import Page404 from './pages/Page404/Page404';
 import DashboardTemplate from './templates/DashboardTemplate';
 import RegistrationPage from './pages/registration/RegistrationPage';
 import HomePage from './pages/homePage/HomePage';
-// import Profile from './pages/profile/Profile';
+import Profile from './pages/profile/Profile';
 
 const App = () => {
   return (
@@ -26,7 +26,7 @@ const App = () => {
 
           <Route element={<DashboardTemplate />}>
             <Route path={routes.home} element={<HomePage />} />
-            {/* <Route path={routes.profile} element={<Profile />} /> */}
+            <Route path={routes.profile} element={<Profile />} />
           </Route>
 
           <Route element={<AuthorizationTemplate />}>
