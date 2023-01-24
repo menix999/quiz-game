@@ -1,6 +1,7 @@
 import styled from 'styled-components';
-import { BarsIcon } from 'react-line-awesome';
-import { useIsSideNavigationOpenDispatch } from '../../../context/isSideNavigationOpenContext/isSideNavigationOpenContext';
+
+import NavigationLink from '../../NavigationLink/NavigationLink';
+import { navigationArray } from '../../../constant/navigation';
 
 const AppBar = styled.div`
   display: flex;
@@ -8,24 +9,22 @@ const AppBar = styled.div`
   width: 100%;
   background-color: ${({ theme }) => theme.colors.navigationMain};
   padding: 10px 12px;
+  border-bottom: 1px solid black;
 `;
 
-const IconWrapper = styled.div`
+const ListItem = styled.div`
   display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 40px;
-  cursor: pointer;
+  flex-direction: column;
 `;
 
 const TopBar = () => {
-  const handleToggleSideNavOpen = useIsSideNavigationOpenDispatch();
-
   return (
     <AppBar>
-      <IconWrapper onClick={() => handleToggleSideNavOpen()}>
-        <BarsIcon size="64px" />
-      </IconWrapper>
+      {navigationArray.map((item) => (
+        <ListItem key={item.id}>
+          <NavigationLink data={item} />
+        </ListItem>
+      ))}
     </AppBar>
   );
 };

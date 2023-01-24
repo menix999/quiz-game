@@ -8,10 +8,7 @@ const StyledContainer = styled.div`
   align-items: center;
   height: 100vh;
   overflow-y: auto;
-`;
-
-const MainBoxWrapper = styled.div`
-  margin-bottom: 201px;
+  background-color: ${({ theme }) => theme.colors.mainBackground};
 `;
 
 const MainWrapper = styled.div`
@@ -25,9 +22,7 @@ const AuthorizationTemplate = () => {
   return (
     <StyledContainer>
       <MainWrapper>
-        <MainBoxWrapper>
-          <Outlet />
-        </MainBoxWrapper>
+        <Outlet />
       </MainWrapper>
     </StyledContainer>
   );
