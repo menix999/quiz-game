@@ -3,6 +3,8 @@ import { useForm } from 'react-hook-form';
 import axios from 'axios';
 import { EyeIcon, EyeSlashIcon } from 'react-line-awesome';
 import { useNavigate } from 'react-router-dom';
+import CircleLoader from '../../components/circleLoader/CircleLoader';
+
 import {
   Wrapper,
   Mainbox,
@@ -12,13 +14,16 @@ import {
   TextInput,
   InputWrapper,
   IconWrapper,
-  ResponseErrorMessage
+  ResponseErrorMessage,
+  CreateAccountWrapper
 } from '../login/LoginPage';
 import { emailReg } from '../../utils/emailReg';
 
 import { useSetDocumentTitle } from '../../hooks/useSetDocumentTitle';
 
 const RegistrationPage = () => {
+  const [isLoading, setIsLoading] = useState(false);
+
   const [isPasswordActive, setIsPasswordActive] = useState({
     pass: false,
     c_pass: false
@@ -28,28 +33,32 @@ const RegistrationPage = () => {
     register,
     handleSubmit,
     watch,
+    reset,
     formState: { errors }
   } = useForm();
 
   useSetDocumentTitle('Registration');
   const navigate = useNavigate();
 
-  const onSubmit = async (data) => {
-    const { email, name, password, c_password } = data;
-    navigate('/login');
-
+  const onSubmit = async ({ name, email, password, c_password }) => {
     try {
+      setIsLoading(true);
       await axios
-        .post('http://93.91.208.217/api/register', {
-          email,
+        .post('http://127.0.0.1:8000/api/register', {
           name,
+          email,
           password,
           c_password
         })
-        .then((res) => console.log(res));
+        .then((resposne) => console.log('resposne', resposne));
+      setIsLoading(false);
+
+      reset();
     } catch (error) {
       console.log(error);
+      setIsLoading(false);
     }
+    // navigate('/login');
   };
 
   const handlePasswordChange = (e) => {
@@ -63,7 +72,7 @@ const RegistrationPage = () => {
   return (
     <Wrapper>
       <Mainbox onSubmit={handleSubmit(onSubmit)}>
-        <Title>Registration</Title>
+        <Title>Register</Title>
         <LoginForm>
           <InputWrapper>
             <TextInput
@@ -141,6 +150,9 @@ const RegistrationPage = () => {
             </ResponseErrorMessage>
           </InputWrapper>
           <SubmitButton type="submit">Register</SubmitButton>
+          <CreateAccountWrapper onClick={() => navigate('/login')}>
+            I already have an acccount
+          </CreateAccountWrapper>
         </LoginForm>
       </Mainbox>
     </Wrapper>
