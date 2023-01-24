@@ -2,11 +2,12 @@ import { Outlet } from 'react-router-dom';
 import styled from 'styled-components';
 import TopBar from '../components/navigation/TopBar/TopBar';
 import ScrollableContainer from './ScrollableContainer';
-import SideNavigation from '../components/navigation/SideNavigation/SideNavigation';
 
 const StyledContainer = styled.div`
   height: 100vh;
+  background-color: ${({ theme }) => theme.colors.mainBackground};
 `;
+
 const ContentContainer = styled.div`
   display: flex;
   height: calc(100vh - 64px);
@@ -18,7 +19,6 @@ const DashboardTemplate = () => {
     <StyledContainer>
       <TopBar />
       <ContentContainer>
-        <SideNavigation />
         <ScrollableContainer>
           <Outlet />
         </ScrollableContainer>

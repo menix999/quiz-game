@@ -1,33 +1,25 @@
-import { HomeIcon, CalendarAltIcon, PlusCircleIcon, SignOutAltIcon } from 'react-line-awesome';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHome, faUser } from '@fortawesome/free-solid-svg-icons';
+import { UserCircleOIcon } from 'react-line-awesome';
+
 import { routes } from '../routes';
+
+const Home = () => <FontAwesomeIcon icon={faHome} />;
+const Profile = () => <FontAwesomeIcon icon={faUser} />;
 
 export const navigationArray = [
   {
     id: 1,
     text: 'Home',
     slug: 'home',
-    path: routes.mainHome,
-    Icon: HomeIcon
+    path: routes.home,
+    Icon: Home
   },
   {
     id: 2,
-    text: 'My Tasks',
-    slug: 'mytasks',
-    path: routes.tasks,
-    Icon: PlusCircleIcon
-  },
-  {
-    id: 3,
-    text: 'Calendar',
-    slug: 'calendar',
-    path: routes.calendar,
-    Icon: CalendarAltIcon
-  }, 
-   {
-    id: 4,
-    text: 'Logout',
-    slug: 'logout',
-    path: routes.login,
-    Icon: SignOutAltIcon
-  },
+    text: 'Profile',
+    slug: 'profile',
+    path: routes.profile,
+    Icon: Profile
+  }
 ];

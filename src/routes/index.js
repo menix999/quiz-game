@@ -1,9 +1,8 @@
 export const routes = {
   main: '/',
   login: '/login',
+  home: '/home',
+  profile: '/profile',
   error: '*',
-  mainHome: '/mainHome',
-  calendar: '/calendar',
-  registration: '/registration',
-  tasks: '/tasks'
+  register: '/register'
 };
