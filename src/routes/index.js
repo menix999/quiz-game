@@ -4,5 +4,7 @@ export const routes = {
   home: '/home',
   profile: '/profile',
   error: '*',
-  register: '/register'
+  register: '/register',
+  createQuiz: '/createQuiz',
+  quiz: '/quiz'
 };

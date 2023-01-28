@@ -15,6 +15,7 @@ import DashboardTemplate from './templates/DashboardTemplate';
 import RegistrationPage from './pages/registration/RegistrationPage';
 import HomePage from './pages/homePage/HomePage';
 import Profile from './pages/profile/Profile';
+import QuizPage from './pages/quizPage/QuizPage';
 
 const App = () => {
   return (
@@ -28,6 +29,9 @@ const App = () => {
             <Route path={routes.home} element={<HomePage />} />
             <Route path={routes.profile} element={<Profile />} />
           </Route>
+
+          <Route path={routes.createQuiz} element={<QuizPage />} />
+          <Route path={`${routes.quiz}/:id`} element={<QuizPage isEdit />} />
 
           <Route element={<AuthorizationTemplate />}>
             <Route path={routes.login} element={<LoginPage />} />

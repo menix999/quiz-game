@@ -1,4 +1,8 @@
 import styled from 'styled-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSquarePlus } from '@fortawesome/free-regular-svg-icons';
+import { faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
+import { useNavigate } from 'react-router';
 
 import NavigationLink from '../../NavigationLink/NavigationLink';
 import { navigationArray } from '../../../constant/navigation';
@@ -10,6 +14,8 @@ const AppBar = styled.div`
   background-color: ${({ theme }) => theme.colors.navigationMain};
   padding: 10px 12px;
   border-bottom: 1px solid black;
+  padding-left: 40px;
+  padding-right: 40px;
 `;
 
 const ListItem = styled.div`
@@ -17,7 +23,31 @@ const ListItem = styled.div`
   flex-direction: column;
 `;
 
+export const CreateQuizWrapper = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+  cursor: pointer;
+`;
+
+export const IconWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  font-size: 25px;
+  cursor: pointer;
+`;
+
+export const CreateQuizText = styled.p`
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  margin: 0 40px 0 10px;
+  white-space: nowrap;
+`;
+
 const TopBar = () => {
+  const navigate = useNavigate();
+
   return (
     <AppBar>
       {navigationArray.map((item) => (
@@ -25,6 +55,15 @@ const TopBar = () => {
           <NavigationLink data={item} />
         </ListItem>
       ))}
+      <CreateQuizWrapper onClick={() => navigate('/createQuiz')}>
+        <IconWrapper>
+          <FontAwesomeIcon icon={faSquarePlus} />
+        </IconWrapper>
+        <CreateQuizText>Create a quiz</CreateQuizText>
+      </CreateQuizWrapper>
+      <IconWrapper onClick={() => navigate('/login')}>
+        <FontAwesomeIcon icon={faRightFromBracket} />
+      </IconWrapper>
     </AppBar>
   );
 };
